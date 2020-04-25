@@ -55,7 +55,7 @@ public class Invoice implements Initializable {
         this.invCustIDCol.setCellValueFactory(new PropertyValueFactory("invCustIDCol"));
         this.invEmpIDCol.setCellValueFactory(new PropertyValueFactory("invEmpIDCol"));
         this.invProdIDCol.setCellValueFactory(new PropertyValueFactory("invProdIDCol"));
-        this.invProdPriceCol.setCellValueFactory(new PropertyValueFactory("invProdPriceCol"));
+
 
         try {
             DBconnection conn = new DBconnection();
@@ -65,7 +65,7 @@ public class Invoice implements Initializable {
             ResultSet resultSet = statement.executeQuery(sql);
 
             while(resultSet.next()) {
-                this.invoiceData.add(new InvoiceTable(resultSet.getString("invIDcol"), resultSet.getString("invDateCol"), resultSet.getString("invCustIDCol"), resultSet.getString("invEmpIDcol"), resultSet.getString("invProdIDCol"), resultSet.getString("invProdPriceCol")));
+                this.invoiceData.add(new InvoiceTable(resultSet.getString("invIDcol"), resultSet.getString("invDateCol"), resultSet.getString("invCustIDCol"), resultSet.getString("invEmpIDcol"), resultSet.getString("invProdIDCol")));
             }
 
             this.invoiceTable.setItems(this.invoiceData);

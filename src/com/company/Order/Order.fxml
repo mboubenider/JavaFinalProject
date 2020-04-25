@@ -19,7 +19,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="693.0" prefWidth="863.0" style="-fx-background-color: #7db7e4;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.Order.Order">
+<AnchorPane fx:id="root" prefHeight="620.0" prefWidth="863.0" style="-fx-background-color: #7db7e4;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.Order.Order">
     <children>
         <Label layoutX="308.0" layoutY="22.0" text="Customer Orders">
             <font>
@@ -48,7 +48,6 @@
                     <columns>
                         <TableColumn fx:id="prodIDCol" prefWidth="75.0" text="Prodcut ID" />
                         <TableColumn fx:id="prodNameCol" prefWidth="93.0" text="Product Name" />
-                        <TableColumn fx:id="prodPriceCol" prefWidth="57.0" text="Price" />
                     </columns>
                 </TableView>
             </children>
@@ -62,7 +61,6 @@
                         <JFXComboBox fx:id="empIDbox" focusColor="#00b7ff" prefHeight="25.0" prefWidth="78.0" />
                         <JFXComboBox fx:id="custIDbox" focusColor="#00b7ff" prefHeight="25.0" prefWidth="78.0" />
                         <JFXComboBox fx:id="productBox" focusColor="#00b7ff" prefHeight="25.0" prefWidth="78.0" />
-                        <JFXComboBox fx:id="priceBox" focusColor="#00b7ff" prefHeight="25.0" prefWidth="78.0" />
                         <DatePicker fx:id="Date" prefHeight="25.0" prefWidth="104.0" />
                     </children>
                 </VBox>
@@ -73,7 +71,6 @@
                         <Label prefHeight="30.0" text="Employee ID:" />
                         <Label prefHeight="30.0" text="Customer ID:" />
                         <Label prefHeight="30.0" text="Product ID:" />
-                        <Label prefHeight="30.0" text="Price:" />
                         <Label contentDisplay="BOTTOM" prefHeight="25.0" prefWidth="48.0" text="     Date:" />
                     </children>
                 </VBox>

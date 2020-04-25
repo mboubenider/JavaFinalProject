@@ -16,12 +16,11 @@
         </Label>
         <TableView fx:id="invoiceTable" layoutX="80.0" layoutY="87.0" prefHeight="309.0" prefWidth="547.0">
             <columns>
-                <TableColumn fx:id="invIDCol" prefWidth="82.0" text="Invoice ID" />
-                <TableColumn fx:id="invDateCol" prefWidth="109.0" text="Invoice Date" />
-                <TableColumn fx:id="invCustIDCol" prefWidth="87.0" text="Customer ID" />
-                <TableColumn fx:id="invEmpIDCol" prefWidth="85.0" text="Employee ID" />
-                <TableColumn fx:id="invProdIDCol" prefWidth="75.0" text="Product ID" />
-                <TableColumn fx:id="invProdPriceCol" prefWidth="111.0" text="Product Price" />
+                <TableColumn fx:id="invIDCol" prefWidth="114.0" text="Invoice ID" />
+                <TableColumn fx:id="invDateCol" prefWidth="89.0" text="Invoice Date" />
+                <TableColumn fx:id="invCustIDCol" prefWidth="114.0" text="Customer ID" />
+                <TableColumn fx:id="invEmpIDCol" prefWidth="114.0" text="Employee ID" />
+                <TableColumn fx:id="invProdIDCol" prefWidth="114.0" text="Product ID" />
             </columns></TableView>
         <JFXButton fx:id="closeBUtton" layoutX="513.0" layoutY="411.0" onAction="#closeScene" prefHeight="31.0" prefWidth="114.0" ripplerFill="RED" style="-fx-background-color: silver;" text="Exit" textFill="RED">
             <font>

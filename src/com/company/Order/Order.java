@@ -37,8 +37,6 @@ public class Order implements Initializable {
     @FXML
     private JFXComboBox productBox;
     @FXML
-    private JFXComboBox priceBox;
-    @FXML
     private JFXComboBox custIDbox;
     @FXML
     private JFXComboBox empIDbox;
@@ -150,7 +148,6 @@ public class Order implements Initializable {
         this.prodPrice.clear();
         this.prodIDCol.setCellValueFactory(new PropertyValueFactory("prodIDCol"));
         this.prodNameCol.setCellValueFactory(new PropertyValueFactory("prodNameCol"));
-        this.prodPriceCol.setCellValueFactory(new PropertyValueFactory("prodPriceCol"));
         DBconnection conn = new DBconnection();
         Connection conn1 = DBconnection.DBcon();
         String sql = "SELECT * FROM Product";
@@ -158,14 +155,12 @@ public class Order implements Initializable {
         ResultSet resultSet = statement.executeQuery(sql);
 
         while(resultSet.next()) {
-            this.prodData.add(new ProductTable(resultSet.getString("ProductID"), resultSet.getString("ProductName"), resultSet.getString("ProductPrice")));
+            this.prodData.add(new ProductTable(resultSet.getString("ProductID"), resultSet.getString("ProductName")));
             this.prodChoice.add(resultSet.getString("productID"));
-            this.prodPrice.add(resultSet.getString("ProductPrice"));
         }
 
         this.prodTable.setItems(this.prodData);
         this.productBox.setItems(this.prodChoice);
-        this.priceBox.setItems(this.prodPrice);
         statement.close();
         conn1.close();
     }
@@ -176,20 +171,17 @@ public class Order implements Initializable {
         DBconnection conn = new DBconnection();
         Connection conn1 = DBconnection.DBcon();
         String orderID = uuid;
-        String makeOrder = "INSERT INTO Orders (invIDCol, invDateCol, invCustIDCol, invEmpIDCol, invProdIDCol, invProdPriceCol) VALUES (?,?,?,?,?,?)";
+        String makeOrder = "INSERT INTO Orders (invIDCol, invDateCol, invCustIDCol, invEmpIDCol, invProdIDCol) VALUES (?,?,?,?,?)";
         Statement st = conn1.createStatement();
-        //ResultSet rs = st.executeQuery("SELECT ProductPrice FROM Product WHERE ProductID = 1");
         String custIDvalues = this.custIDbox.getSelectionModel().getSelectedItem().toString();
         String empIDvalues = this.empIDbox.getSelectionModel().getSelectedItem().toString();
         String prodValues = this.productBox.getSelectionModel().getSelectedItem().toString(); //gets selected ID
-        String price = this.priceBox.getSelectionModel().getSelectedItem().toString();
         PreparedStatement statement = conn1.prepareStatement(makeOrder);
         statement.setString(1, uuid);
         statement.setString(2, this.Date.getEditor().getText());
         statement.setString(3, custIDvalues);
         statement.setString(4, empIDvalues);
         statement.setString(5, prodValues);
-        statement.setString(6, price);
 
         statement.executeUpdate();
         this.alertLabel.setText("Sucessfully created the Order!");

@@ -8,12 +8,11 @@ package com.company.Order;
 public class ProductTable {
     String prodIDCol;
     String prodNameCol;
-    String prodPriceCol;
 
-    public ProductTable(String prodIDCol, String prodNameCol, String prodPriceCol) {
+    public ProductTable(String prodIDCol, String prodNameCol) {
         this.prodIDCol = prodIDCol;
         this.prodNameCol = prodNameCol;
-        this.prodPriceCol = prodPriceCol;
+
     }
 
     public String getProdIDCol() {
@@ -32,11 +31,4 @@ public class ProductTable {
         this.prodNameCol = prodNameCol;
     }
 
-    public String getProdPriceCol() {
-        return this.prodPriceCol;
-    }
-
-    public void setProdPriceCol(String prodPriceCol) {
-        this.prodPriceCol = prodPriceCol;
-    }
 }
