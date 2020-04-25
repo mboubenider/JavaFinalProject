@@ -16,8 +16,8 @@ public class Main extends Application {
     }
 
     public void start(Stage primaryStage) throws Exception {
-        Parent root = (Parent)FXMLLoader.load(this.getClass().getResource("MainPage/MainPage.fxml"));
-        primaryStage.setTitle("Forklift Certification Management");
+        Parent root = (Parent)FXMLLoader.load(this.getClass().getResource("Login/Login.fxml"));
+        primaryStage.setTitle("Best Clothing Store");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
