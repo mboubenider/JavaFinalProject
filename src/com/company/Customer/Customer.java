@@ -55,6 +55,8 @@ public class Customer implements Initializable {
     @FXML
     private JFXTextField custPhone;
     @FXML
+    private JFXTextField searchcustomers;
+    @FXML
     private TableView<CustomerTable> custTable;
     @FXML
     private TableColumn<CustomerTable, String> custIDCol;
@@ -184,6 +186,37 @@ public class Customer implements Initializable {
             var14.printStackTrace();
         }
 
+    }
+
+    public void searchCus (ActionEvent actionEvent) throws IOException {
+        this.custData.clear();
+        this.custIDCol.setCellValueFactory(new PropertyValueFactory("custIDCol"));
+        this.custFNameCol.setCellValueFactory(new PropertyValueFactory("custFNameCol"));
+        this.custLNameCol.setCellValueFactory(new PropertyValueFactory("custLNameCol"));
+        this.custAddressCol.setCellValueFactory(new PropertyValueFactory("custAddressCol"));
+        this.custCityCol.setCellValueFactory(new PropertyValueFactory("custCityCol"));
+        this.custStateCol.setCellValueFactory(new PropertyValueFactory("custStateCol"));
+        this.custZipCol.setCellValueFactory(new PropertyValueFactory("custZipCol"));
+        this.custPhoneCol.setCellValueFactory(new PropertyValueFactory("custPhoneCol"));
+
+        try {
+            DBconnection conn = new DBconnection();
+            Connection conn1 = DBconnection.DBcon();
+            String sql = "SELECT * FROM Customer WHERE CustFName ='"+ this.searchcustomers.getText()+"'";
+            System.out.println(this.searchcustomers.getText());
+            PreparedStatement statement = conn1.prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery(sql);
+
+            while(resultSet.next()) {
+                this.custData.add(new CustomerTable(resultSet.getString("CusNo"), resultSet.getString("CustFName"), resultSet.getString("CustLName"), resultSet.getString("CustStreet"), resultSet.getString("CustCity"), resultSet.getString("CustState"), resultSet.getString("CustZip"), resultSet.getString("CustPhone")));
+            }
+
+            this.custTable.setItems(this.custData);
+            statement.close();
+            conn1.close();
+        } catch (Exception var7) {
+            var7.printStackTrace();
+        }
     }
 
     public void custSubmitAction(ActionEvent actionEvent) throws SQLException {

@@ -58,6 +58,9 @@
                 <Font size="15.0" />
             </font>
         </JFXButton>
+        <Label layoutX="310.0" layoutY="100.0" prefHeight="30.0" text="Customer First Name:"/>
+        <JFXTextField fx:id="searchcustomers" layoutX="430.0" layoutY="100.0" focusColor="RED" style="-fx-background-color: white; -fx-border-color: teal;" unFocusColor="BLACK"/>
+        <JFXButton fx:id="searchemployees" layoutX="580.0" layoutY="100.0" onAction = "#searchCus" prefHeight="30.0" prefWidth="60.0" ripplerFill="RED" style="-fx-background-color: silver;" text="Search"></JFXButton>
         <ImageView fitHeight="95.0" fitWidth="257.0" layoutX="38.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../Image/logo.png" />
