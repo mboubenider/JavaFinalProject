@@ -92,4 +92,5 @@ public class CustomerTable {
     public void setCustPhoneCol(String custPhoneCol) {
         this.custPhoneCol = custPhoneCol;
     }
+
 }

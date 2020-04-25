@@ -6,6 +6,7 @@
 package com.company.Customer;
 
 import com.company.DBconnection;
+import com.company.Employee.EmployeeTable;
 import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
@@ -116,7 +117,7 @@ public class Customer implements Initializable {
             ResultSet resultSet = statement.executeQuery(sql);
 
             while(resultSet.next()) {
-                this.custData.add(new CustomerTable(resultSet.getString("CustID"), resultSet.getString("CustFName"), resultSet.getString("CustLName"), resultSet.getString("CustStreet"), resultSet.getString("CustCity"), resultSet.getString("CustState"), resultSet.getString("CustZip"), resultSet.getString("CustPhone")));
+                this.custData.add(new CustomerTable(resultSet.getString("CusNo"), resultSet.getString("CustFName"), resultSet.getString("CustLName"), resultSet.getString("CustStreet"), resultSet.getString("CustCity"), resultSet.getString("CustState"), resultSet.getString("CustZip"), resultSet.getString("CustPhone")));
             }
 
             this.custTable.setItems(this.custData);
@@ -127,6 +128,22 @@ public class Customer implements Initializable {
         }
 
     }
+
+    public void empDeleteAction(ActionEvent actionEvent) throws SQLException {
+        DBconnection conn = new DBconnection();
+        Connection conn1 = DBconnection.DBcon();
+        String sql = "DELETE FROM Customer WHERE CusNo=?";
+        String id = (this.custTable.getItems().get(this.custTable.getSelectionModel().getSelectedIndex())).getCustIDCol();
+        PreparedStatement statement = conn1.prepareStatement(sql);
+        statement.setString(1, id);
+        statement.executeUpdate();
+        this.alertLabel.setText("Sucessfully Deleted!");
+        statement.close();
+        conn1.close();
+        String empty = "";
+    }
+
+
     String uuid = UUID.randomUUID().toString();
 
     public void custAddAction(ActionEvent actionEvent) {
@@ -172,7 +189,7 @@ public class Customer implements Initializable {
     public void custSubmitAction(ActionEvent actionEvent) throws SQLException {
         DBconnection conn = new DBconnection();
         Connection conn1 = DBconnection.DBcon();
-        String sql = "UPDATE Customer SET CustFName=?, CustLName=?, CustStreet=?, CustCity=?, CustState=?, CustZip=?, CustPhone=? WHERE CustID=?";
+        String sql = "UPDATE Customer SET CustFName=?, CustLName=?, CustStreet=?, CustCity=?, CustState=?, CustZip=?, CustPhone=? WHERE CusNo=?";
         String id = ((CustomerTable)this.custTable.getItems().get(this.custTable.getSelectionModel().getSelectedIndex())).getCustIDCol();
         String fName = this.custFName.getText();
         String lName = this.custLName.getText();

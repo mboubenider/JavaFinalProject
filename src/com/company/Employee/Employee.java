@@ -74,6 +74,8 @@ public class Employee implements Initializable {
     @FXML
     private JFXTextField empZip;
     @FXML
+    private JFXTextField searchresult;
+    @FXML
     private JFXTextField Phone;
     ObservableList<EmployeeTable> empData = FXCollections.observableArrayList();
 
@@ -118,12 +120,12 @@ public class Employee implements Initializable {
         try {
             DBconnection conn = new DBconnection();
             Connection conn1 = DBconnection.DBcon();
-            String sql = "SELECT * FROM Employee";
+            String sql = "SELECT * FROM Employee ORDER BY EmployeeNo";
             Statement statement = conn1.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
 
             while(resultSet.next()) {
-                this.empData.add(new EmployeeTable(resultSet.getString("EmpID"), resultSet.getString("EmpFName"), resultSet.getString("EmpLName"), resultSet.getString("EmpPass"), resultSet.getString("EmpStreet"), resultSet.getString("EmpCity"), resultSet.getString("EmpState"), resultSet.getString("EmpZip"), resultSet.getString("Phone")));
+                this.empData.add(new EmployeeTable(resultSet.getString("EmployeeNo"), resultSet.getString("EmpFName"), resultSet.getString("EmpLName"), resultSet.getString("EmpPass"), resultSet.getString("EmpStreet"), resultSet.getString("EmpCity"), resultSet.getString("EmpState"), resultSet.getString("EmpZip"), resultSet.getString("Phone"), resultSet.getString("EmployeeNo")));
             }
 
             this.empTable.setItems(this.empData);
@@ -133,6 +135,38 @@ public class Employee implements Initializable {
             var7.printStackTrace();
         }
 
+    }
+
+    public void searchEmp (ActionEvent actionEvent) throws IOException {
+        this.empData.clear();
+        this.empIDCol.setCellValueFactory(new PropertyValueFactory("empIDCol"));
+        this.empFNameCol.setCellValueFactory(new PropertyValueFactory("empFNameCol"));
+        this.empLNameCol.setCellValueFactory(new PropertyValueFactory("empLNameCol"));
+        this.empPassCol.setCellValueFactory(new PropertyValueFactory("empPassCol"));
+        this.empStreetCol.setCellValueFactory(new PropertyValueFactory("empStreetCol"));
+        this.empCityCol.setCellValueFactory(new PropertyValueFactory("empCityCol"));
+        this.empStateCol.setCellValueFactory(new PropertyValueFactory("empStateCol"));
+        this.empZipCol.setCellValueFactory(new PropertyValueFactory("empZipCol"));
+        this.empPhoneCol.setCellValueFactory(new PropertyValueFactory("empPhoneCol"));
+
+        try {
+            DBconnection conn = new DBconnection();
+            Connection conn1 = DBconnection.DBcon();
+            String sql = "SELECT * FROM Employee WHERE EmployeeNo ="+ this.searchresult.getText();
+            System.out.println(this.searchresult.getText());
+            PreparedStatement statement = conn1.prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery(sql);
+
+            while(resultSet.next()) {
+                this.empData.add(new EmployeeTable(resultSet.getString("EmployeeNo"), resultSet.getString("EmpFName"), resultSet.getString("EmpLName"), resultSet.getString("EmpPass"), resultSet.getString("EmpStreet"), resultSet.getString("EmpCity"), resultSet.getString("EmpState"), resultSet.getString("EmpZip"), resultSet.getString("Phone"), resultSet.getString("EmployeeNo")));
+            }
+
+            this.empTable.setItems(this.empData);
+            statement.close();
+            conn1.close();
+        } catch (Exception var7) {
+            var7.printStackTrace();
+        }
     }
 
     String uuid = UUID.randomUUID().toString();
@@ -175,11 +209,26 @@ public class Employee implements Initializable {
         this.Phone.setText(empty);
     }
 
+    public void empDeleteAction(ActionEvent actionEvent) throws SQLException {
+        DBconnection conn = new DBconnection();
+        Connection conn1 = DBconnection.DBcon();
+        String sql = "DELETE FROM Employee WHERE EmployeeNo=?";
+        String id = ((EmployeeTable)this.empTable.getItems().get(this.empTable.getSelectionModel().getSelectedIndex())).getEmpIDCol();
+        PreparedStatement statement = conn1.prepareStatement(sql);
+        statement.setString(1, id);
+        statement.executeUpdate();
+        this.alertLabel.setText("Sucessfully Deleted!");
+        statement.close();
+        conn1.close();
+        String empty = "";
+    }
+
     public void empSubmitAction(ActionEvent actionEvent) throws SQLException {
         DBconnection conn = new DBconnection();
         Connection conn1 = DBconnection.DBcon();
-        String sql = "UPDATE Employee SET EmpFName=?, EmpLName=?, EmpPass=?, EmpStreet=?, EmpCity=?, EmpState=?, EmpZip=?, Phone=? WHERE EmpID=?";
+        String sql = "UPDATE Employee SET EmpFName=?, EmpLName=?, EmpPass=?, EmpStreet=?, EmpCity=?, EmpState=?, EmpZip=?, Phone=? WHERE EmployeeNo=?";
         String id = ((EmployeeTable)this.empTable.getItems().get(this.empTable.getSelectionModel().getSelectedIndex())).getEmpIDCol();
+        System.out.println(id);
         String fName = this.empFName.getText();
         String lName = this.empLName.getText();
         String pass = this.empPass.getText();
@@ -233,7 +282,7 @@ public class Employee implements Initializable {
             ResultSet resultSet = statement.executeQuery(sql);
 
             while(resultSet.next()) {
-                this.empData.add(new EmployeeTable(resultSet.getString("EmpID"), resultSet.getString("EmpFName"), resultSet.getString("EmpLName"), resultSet.getString("EmpPass"), resultSet.getString("EmpStreet"), resultSet.getString("EmpCity"), resultSet.getString("EmpState"), resultSet.getString("EmpZip"), resultSet.getString("Phone")));
+                this.empData.add(new EmployeeTable(resultSet.getString("EmployeeNo"), resultSet.getString("EmpFName"), resultSet.getString("EmpLName"), resultSet.getString("EmpPass"), resultSet.getString("EmpStreet"), resultSet.getString("EmpCity"), resultSet.getString("EmpState"), resultSet.getString("EmpZip"), resultSet.getString("Phone"), resultSet.getString("EmployeeNo")));
             }
 
             this.empTable.setItems(this.empData);

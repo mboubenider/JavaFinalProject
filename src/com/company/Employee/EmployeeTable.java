@@ -15,8 +15,9 @@ public class EmployeeTable {
     String empStateCol;
     String empZipCol;
     String empPhoneCol;
+    String empNoCol;
 
-    public EmployeeTable(String empIDCol, String empFNameCol, String empLNameCol, String empPassCol, String empStreetCol, String empCityCol, String empStateCol, String empZipCol, String empPhoneCol) {
+    public EmployeeTable(String empIDCol, String empFNameCol, String empLNameCol, String empPassCol, String empStreetCol, String empCityCol, String empStateCol, String empZipCol, String empPhoneCol, String empNoCol) {
         this.empIDCol = empIDCol;
         this.empFNameCol = empFNameCol;
         this.empLNameCol = empLNameCol;
@@ -26,6 +27,7 @@ public class EmployeeTable {
         this.empStateCol = empStateCol;
         this.empZipCol = empZipCol;
         this.empPhoneCol = empPhoneCol;
+        this.empNoCol = empNoCol;
     }
 
     public String getEmpIDCol() {
@@ -38,6 +40,14 @@ public class EmployeeTable {
 
     public String getEmpFNameCol() {
         return this.empFNameCol;
+    }
+
+    public void setEmpNoCol(String empNoCol) {
+        this.empIDCol = empNoCol;
+    }
+
+    public String getEmpNoCol() {
+        return this.empNoCol;
     }
 
     public void setEmpFNameCol(String empFNameCol) {

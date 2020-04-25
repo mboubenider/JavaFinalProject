@@ -7,7 +7,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="463.0" prefWidth="706.0" style="-fx-background-color: #7db7e4;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.Invoice.Invoice">
+<?import javafx.scene.control.TextField?>
+<AnchorPane fx:id="root" prefHeight="550.0" prefWidth="900.0" style="-fx-background-color: #7db7e4;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.Invoice.Invoice">
     <children>
         <Label layoutX="236.0" layoutY="14.0" text="Invoice Record">
             <font>
@@ -21,10 +22,21 @@
                 <TableColumn fx:id="invCustIDCol" prefWidth="114.0" text="Customer ID" />
                 <TableColumn fx:id="invEmpIDCol" prefWidth="114.0" text="Employee ID" />
                 <TableColumn fx:id="invProdIDCol" prefWidth="114.0" text="Product ID" />
-            </columns></TableView>
+            </columns>
+        </TableView>
         <JFXButton fx:id="closeBUtton" layoutX="513.0" layoutY="411.0" onAction="#closeScene" prefHeight="31.0" prefWidth="114.0" ripplerFill="RED" style="-fx-background-color: silver;" text="Exit" textFill="RED">
             <font>
                 <Font size="15.0" />
-            </font></JFXButton>
+            </font>
+        </JFXButton>
+        <JFXButton fx:id="search" layoutX="85.0" layoutY="411.0" onAction="#search" prefHeight="31.0" prefWidth="114.0" ripplerFill="RED" style="-fx-background-color: silver;" text="Search" textFill="RED">
+        <font>
+            <Font size="15.0" />
+        </font>
+        </JFXButton>
+        <Label layoutX="40.0" layoutY="411.0" prefHeight="30.0" text="Search:"/>
+        <TextField fx:id="searchbar" layoutX ="200" layoutY ="411.0">
+        </TextField>
+
     </children>
 </AnchorPane>

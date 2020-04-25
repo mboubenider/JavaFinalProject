@@ -21,6 +21,7 @@
                 <Font size="15.0" />
             </font>
         </JFXButton>
+        <JFXButton fx:id="empDelete" buttonType="RAISED" layoutX="13.0" layoutY="500.0" onAction="#empDeleteAction" prefHeight="50.0" prefWidth="75.0" ripplerFill="RED" style="-fx-background-color: silver;" text="Delete" textFill="RED" />
         <JFXButton fx:id="custAdd" buttonType="RAISED" layoutX="13.0" layoutY="434.0" onAction="#custAddAction" prefHeight="50.0" prefWidth="125.0" ripplerFill="RED" style="-fx-background-color: silver; -fx-border-color: red;" text="Add Customer" textFill="RED">
             <font>
                 <Font size="15.0" />

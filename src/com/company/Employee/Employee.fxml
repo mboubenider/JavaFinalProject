@@ -31,6 +31,7 @@
         </VBox>
         <JFXButton fx:id="empSubmit" buttonType="RAISED" layoutX="107.0" layoutY="337.0" onAction="#empSubmitAction" prefHeight="50.0" prefWidth="75.0" ripplerFill="RED" style="-fx-background-color: silver;" text="Submit" textFill="RED" />
         <JFXButton fx:id="empAdd" buttonType="RAISED" layoutX="14.0" layoutY="337.0" onAction="#empAddAction" prefHeight="50.0" prefWidth="75.0" ripplerFill="RED" style="-fx-background-color: silver;" text="Add New" textFill="RED" />
+        <JFXButton fx:id="empDelete" buttonType="RAISED" layoutX="14.0" layoutY="397.0" onAction="#empDeleteAction" prefHeight="50.0" prefWidth="75.0" ripplerFill="RED" style="-fx-background-color: silver;" text="Delete" textFill="RED" />
         <Label layoutX="342.0" layoutY="14.0" text="Employee Information">
             <font>
                 <Font size="36.0" />
@@ -44,14 +45,17 @@
         <Label layoutX="29.0" layoutY="242.0" prefHeight="30.0" text="State:" />
         <Label layoutX="35.0" layoutY="269.0" prefHeight="30.0" text="Zip:" />
         <Label layoutX="25.0" layoutY="300.0" text="Phone:" />
-        <JFXButton fx:id="loadEmpbutton" buttonType="RAISED" layoutX="902.0" layoutY="312.0" onAction="#loadInfo" prefHeight="50.0" prefWidth="122.0" ripplerFill="RED" style="-fx-background-color: silver;" text="Current Employee" textFill="RED" />
-        <JFXButton fx:id="loadPastEmp" buttonType="RAISED" layoutX="759.0" layoutY="312.0" onAction="#loadPastEmp" prefHeight="50.0" prefWidth="122.0" ripplerFill="RED" style="-fx-background-color: silver;" text="Past Employee" textFill="RED" />
+        <JFXButton fx:id="loadEmpbutton" buttonType="RAISED" layoutX="902.0" layoutY="312.0" onAction="#loadInfo" prefHeight="50.0" prefWidth="122.0" ripplerFill="RED" style="-fx-background-color: silver;" text="Current Employees" textFill="RED" />
+        <JFXButton fx:id="loadPastEmp" buttonType="RAISED" layoutX="759.0" layoutY="312.0" onAction="#loadPastEmp" prefHeight="50.0" prefWidth="122.0" ripplerFill="RED" style="-fx-background-color: silver;" text="Past Employees" textFill="RED" />
         <JFXButton fx:id="archive" buttonType="RAISED" layoutX="202.0" layoutY="337.0" onAction="#archiveEmployee" prefHeight="50.0" prefWidth="75.0" ripplerFill="RED" style="-fx-background-color: silver;" text="Archive" textFill="RED" />
         <Label fx:id="alertLabel" layoutX="368.0" layoutY="343.0" prefHeight="38.0" prefWidth="332.0">
             <font>
                 <Font size="26.0" />
             </font>
         </Label>
+        <Label layoutX="300.0" layoutY="70.0" prefHeight="30.0" text="Employee ID:"/>
+        <JFXTextField fx:id="searchresult" layoutX="400.0" layoutY="70.0" focusColor="RED" style="-fx-background-color: white; -fx-border-color: teal;" unFocusColor="BLACK"/>
+        <JFXButton fx:id="searchemployees" layoutX="550.0" layoutY="70.0" onAction = "#searchEmp" prefHeight="30.0" prefWidth="60.0" ripplerFill="RED" style="-fx-background-color: silver;" text="Search"></JFXButton>
         <TableView fx:id="empTable" layoutX="300.0" layoutY="103.0" prefHeight="199.0" prefWidth="730.0">
             <columns>
                 <TableColumn fx:id="empIDCol" prefWidth="34.0" text="ID" />
