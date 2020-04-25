@@ -63,7 +63,7 @@ public class Invoice implements Initializable {
         this.invCustIDCol.setCellValueFactory(new PropertyValueFactory("invCustIDCol"));
         this.invEmpIDCol.setCellValueFactory(new PropertyValueFactory("invEmpIDCol"));
         this.invProdIDCol.setCellValueFactory(new PropertyValueFactory("invProdIDCol"));
-        this.invReceipt.setCellValueFactory(new PropertyValueFactory("invReceipt"));
+        //this.invReceipt.setCellValueFactory(new PropertyValueFactory("invReceipt"));
 
         try {
             DBconnection conn = new DBconnection();

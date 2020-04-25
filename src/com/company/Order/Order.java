@@ -149,6 +149,7 @@ public class Order implements Initializable {
         this.prodPrice.clear();
         this.prodIDCol.setCellValueFactory(new PropertyValueFactory("prodIDCol"));
         this.prodNameCol.setCellValueFactory(new PropertyValueFactory("prodNameCol"));
+        this.prodPriceCol.setCellValueFactory(new PropertyValueFactory("prodPriceCol"));
         DBconnection conn = new DBconnection();
         Connection conn1 = DBconnection.DBcon();
         String sql = "SELECT * FROM Product";
@@ -156,7 +157,7 @@ public class Order implements Initializable {
         ResultSet resultSet = statement.executeQuery(sql);
 
         while(resultSet.next()) {
-            this.prodData.add(new ProductTable(resultSet.getString("ProductID"), resultSet.getString("ProductName")));
+            this.prodData.add(new ProductTable(resultSet.getString("ProductID"), resultSet.getString("ProductName"), resultSet.getString("price")));
             this.prodChoice.add(resultSet.getString("productID"));
         }
 

@@ -48,6 +48,7 @@
                     <columns>
                         <TableColumn fx:id="prodIDCol" prefWidth="75.0" text="Prodcut ID" />
                         <TableColumn fx:id="prodNameCol" prefWidth="93.0" text="Product Name" />
+                        <TableColumn fx:id="prodPriceCol" prefWidth="65.0" text="Price" />
                     </columns>
                 </TableView>
             </children>
