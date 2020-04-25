@@ -11,14 +11,16 @@ public class InvoiceTable {
     String invCustIDCol;
     String invEmpIDCol;
     String invProdIDCol;
+    String invReceipt;
 
 
-    public InvoiceTable(String invIDCol, String invDateCol, String invCustIDCol, String invEmpIDCol, String invProdIDCol) {
+    public InvoiceTable(String invIDCol, String invDateCol, String invCustIDCol, String invEmpIDCol, String invProdIDCol, String invReceipt) {
         this.invIDCol = invIDCol;
         this.invDateCol = invDateCol;
         this.invCustIDCol = invCustIDCol;
         this.invEmpIDCol = invEmpIDCol;
         this.invProdIDCol = invProdIDCol;
+        this.invReceipt = invReceipt;
 
     }
 
@@ -28,6 +30,14 @@ public class InvoiceTable {
 
     public void setInvIDCol(String invIDCol) {
         this.invIDCol = invIDCol;
+    }
+
+    public String getInvReceipt() {
+        return this.invReceipt;
+    }
+
+    public void setInvReceipt(String invReceipt) {
+        this.invReceipt = invReceipt;
     }
 
     public String getInvDateCol() {

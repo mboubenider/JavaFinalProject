@@ -8,6 +8,7 @@ package com.company.Order;
 import com.company.DBconnection;
 import com.jfoenix.controls.JFXComboBox;
 import java.io.IOException;
+import java.math.BigInteger;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -170,18 +171,20 @@ public class Order implements Initializable {
     public void createOrder(ActionEvent actionEvent) throws SQLException {
         DBconnection conn = new DBconnection();
         Connection conn1 = DBconnection.DBcon();
+        String x = Double.toString(Math.random());
         String orderID = uuid;
-        String makeOrder = "INSERT INTO Orders (invIDCol, invDateCol, invCustIDCol, invEmpIDCol, invProdIDCol) VALUES (?,?,?,?,?)";
+        String makeOrder = "INSERT INTO Orders (invIDCol, invDateCol, invCustIDCol, invEmpIDCol, invProdIDCol, receiptNo) VALUES (?,?,?,?,?,?)";
         Statement st = conn1.createStatement();
         String custIDvalues = this.custIDbox.getSelectionModel().getSelectedItem().toString();
         String empIDvalues = this.empIDbox.getSelectionModel().getSelectedItem().toString();
-        String prodValues = this.productBox.getSelectionModel().getSelectedItem().toString(); //gets selected ID
+        String prodValues = this.productBox.getSelectionModel().getSelectedItem().toString();
         PreparedStatement statement = conn1.prepareStatement(makeOrder);
-        statement.setString(1, uuid);
+        statement.setString(1, orderID);
         statement.setString(2, this.Date.getEditor().getText());
         statement.setString(3, custIDvalues);
         statement.setString(4, empIDvalues);
         statement.setString(5, prodValues);
+        statement.setString(6, x);
 
         statement.executeUpdate();
         this.alertLabel.setText("Sucessfully created the Order!");
