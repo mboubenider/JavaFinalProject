@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="463.0" prefWidth="706.0" style="-fx-background-color: #00e0ff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.Invoice.Invoice">
+<AnchorPane fx:id="root" prefHeight="463.0" prefWidth="706.0" style="-fx-background-color: #7db7e4;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.Invoice.Invoice">
     <children>
         <Label layoutX="236.0" layoutY="14.0" text="Invoice Record">
             <font>

@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="596.0" prefWidth="1022.0" style="-fx-background-color: #00e0ff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.Customer.Customer">
+<AnchorPane fx:id="root" prefHeight="596.0" prefWidth="1022.0" style="-fx-background-color: #7db7e4;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.Customer.Customer">
     <children>
         <JFXButton fx:id="empSave" buttonType="RAISED" layoutX="156.0" layoutY="434.0" onAction="#custSubmitAction" prefHeight="50.0" prefWidth="125.0" ripplerFill="RED" style="-fx-background-color: silver; -fx-border-color: red;" text="Save Changes" textFill="RED">
             <font>
